@@ -1,0 +1,74 @@
+.row {
+    margin-left: 150px;
+}
+
+.video {
+    &s_grid {
+        padding: 10px 30px;
+        padding-top: 80px;
+        padding-left: 100px;
+    }
+
+    &_time {
+        position: absolute;
+        padding: 5px;
+        top: 160px;
+        right: 0px;
+
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+
+        font-family: Roboto, Arial, sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        color: white;
+        backdrop-filter: blur(10px);
+        text-decoration: none;
+    }
+
+    &-content {
+        display: flex;
+    }
+
+    &_dates>p {
+        font-family: Roboto, Arial, sans-serif;
+        margin-bottom: 0;
+    }
+
+    &_grey {
+        font-size: 14px;
+        color: #909090;
+        &>p {
+            margin-bottom: 0;
+        }
+    }
+
+    &_a {
+        padding-bottom: 20px;
+        color: white;
+        & p {
+            color: white;
+        }
+    }
+}
+
+.img-overflow>img {
+    margin-right: 50px;
+
+    object-fit: cover;
+
+    width: 200px;
+    height: 200px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.channel_img {
+    margin-right: 15px;
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    width: 40px;
+    height: 40px;
+}
