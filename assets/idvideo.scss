@@ -1,0 +1,66 @@
+.video {
+  &_item {
+    margin: 80px 100px;
+
+    &>iframe {
+      width: 1279px;
+      height: 725px;
+
+    }
+  }
+
+  &_header {
+    padding-top: 20px;
+    font-size: 18px;
+  }
+
+  &_info {
+    padding-top: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 14px;
+    color: #AAAAAA;
+
+    &>.likes {
+      display: flex;
+      align-items: center;
+      font-weight: 900;
+      text-transform: uppercase;
+      &>.like {
+        display: flex;
+        align-items: center;
+        font-weight: 900;
+
+        &>.isliked>img {
+          margin: 0 10px;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        padding: 0 10px;
+      }
+
+      &>.share {
+        &> img {
+          cursor: pointer;
+        }
+        padding: 0 10px;
+        align-items: center;
+      }
+    }
+  }
+}
+
+
+.active {
+  color: yellow;
+
+  &>img {
+    fill: yellow;
+  }
+}

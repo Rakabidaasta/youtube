@@ -1,11 +1,39 @@
-<template>
+<template style="../assets/idvideo.scss">
   <div class="bg-black text-white">
     <Navbar />
     <div class="video_item">
-      <iframe width="560" height="315" :src=urlVideo title="YouTube video player" frameborder="0"
+      <iframe :src=urlVideo title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen></iframe>
-      <a href="/#"> zzzzz {{url}} aaa </a>
+
+      <div class="video_header">
+        {{ video.name }}
+      </div>
+      <div class="video_info">
+        <div class="views">
+          {{video.views}} просмотров • Дата премьеры: {{video.date}}
+        </div>
+        <div class="likes">
+          <div class="like">
+            <div class="isliked" v-bind:class="{ active: isLike }">
+              <img width="20" src="../static/liked.svg" alt="" @click="isLike = true">
+              10
+            </div>
+            <div class="isliked" v-bind:class="{ active: !isLike }">
+              <img width="20" src="../static/dislike.svg" alt="" @click="isLike = false">
+              2
+            </div>
+          </div>
+          <div class="share">
+            <img width="20" src="../static/share.svg" alt="">
+            Поделиться
+          </div>
+          <div class="share">
+            <img width="20" src="../static/add_to_playlist.svg" alt="">
+            Сохранить
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -18,9 +46,11 @@
       return {
         videos: videos_json,
         url: this.$route.params.id,
+        video: videos_json[this.$route.params.id],
+        likes: 0,
+        isLike: false
       }
     },
-
     computed: {
       urlVideo: function () {
         return this.videos[this.url].url

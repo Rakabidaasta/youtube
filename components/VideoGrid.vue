@@ -15,7 +15,7 @@
               <p>{{ video.name }}</p>
               <div class="video_grey">
                 <p>{{ video.channel }}</p>
-                <p>{{ video.views }} просмотров &nbsp; {{video.time}}</p>
+                <p>{{ video.views }} просмотров • {{video.time}}</p>
               </div>
             </div>
           </div>
