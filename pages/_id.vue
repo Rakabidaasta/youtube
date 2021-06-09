@@ -1,39 +1,63 @@
 <template style="../assets/idvideo.scss">
   <div class="bg-black text-white">
     <Navbar />
-    <div class="video_item">
-      <iframe :src=urlVideo title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
+    <div class="id_video">
+      <div class="video_item">
+        <iframe :src=urlVideo title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
 
-      <div class="video_header">
-        {{ video.name }}
-      </div>
-      <div class="video_info">
-        <div class="views">
-          {{video.views}} просмотров • Дата премьеры: {{video.date}}
+        <div class="video_header">
+          {{ video.name }}
         </div>
-        <div class="likes">
-          <div class="like">
-            <div class="isliked" v-bind:class="{ active: isLike }">
-              <img width="20" src="../static/liked.svg" alt="" @click="isLike = true">
-              10
+        <div class="video_info">
+          <div class="views">
+            {{video.views}} просмотров • Дата премьеры: {{video.date}}
+          </div>
+          <div class="likes">
+            <div class="like" v-bind:class="{ active_border: isLike }">
+              <div class="isliked" v-bind:class="{ active: isLike }" @click="isLike = true; likes++; dislikes--">
+                <img width="20" src="../static/liked.svg" alt="">
+                {{ likes }}
+              </div>
+              <div class="isliked" v-bind:class="{ active: !isLike }" @click="isLike = false; dislikes++; likes--">
+                <img width="20" src="../static/dislike.svg" alt="">
+                {{ dislikes }}
+              </div>
             </div>
-            <div class="isliked" v-bind:class="{ active: !isLike }">
-              <img width="20" src="../static/dislike.svg" alt="" @click="isLike = false">
-              2
+            <div class="share">
+              <img width="20" src="../static/share.svg" alt="">
+              Поделиться
+            </div>
+            <div class="share">
+              <img width="20" src="../static/add_to_playlist.svg" alt="">
+              Сохранить
+            </div>
+            <div class="share">
+              <img width="20" src="../static/three_dots.svg" alt="">
             </div>
           </div>
-          <div class="share">
-            <img width="20" src="../static/share.svg" alt="">
-            Поделиться
+        </div>
+        <hr>
+        <div class="video_content">
+          <div class="channel_info">
+            <div class="channel_header">
+              <img :src=video.channel_img alt="" class="channel_img">
+              {{ video.channel }}
+            </div>
+            <div class="video_desc">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, nemo, molestias quam quos quae
+              doloremque recusandae quidem aliquid ducimus facere repellendus autem rem odio accusamus optio eius?
+              Ipsum,
+              velit quas!
+            </div>
           </div>
-          <div class="share">
-            <img width="20" src="../static/add_to_playlist.svg" alt="">
-            Сохранить
+          <div class="button_subscribe">
+            Подписаться
           </div>
         </div>
       </div>
+      <SmallVideoGrid />
     </div>
   </div>
 </template>
@@ -47,8 +71,9 @@
         videos: videos_json,
         url: this.$route.params.id,
         video: videos_json[this.$route.params.id],
-        likes: 0,
-        isLike: false
+        likes: 10,
+        dislikes: 2,
+        isLike: true
       }
     },
     computed: {

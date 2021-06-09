@@ -84,7 +84,7 @@
   top: 0px;
   left: 0px;
 //   position: fixed;
-  width: 250px;
+  width: 240px;
   height: 100%;
   background-color: #202020;
 
@@ -192,8 +192,9 @@
   }
 }
 
-#first {
-  padding-top: 60px;
+#first_item {
+  padding-top: 50px;
+
 }
 
 .playlist_item {
@@ -221,6 +222,10 @@
   display: flex;
 
   &>img {
+    border-radius: 50%;
+
+    object-fit: cover;
+  
     width: 20px;
     height: 20px;
   }

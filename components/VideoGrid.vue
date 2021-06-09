@@ -46,10 +46,6 @@
     },
     methods: {
       getstr(n, url) {
-        console.log(n);
-        console.log(typeof (n));
-        console.log(url);
-        console.log("http://localhost:3000/");
         return "http://localhost:3000/" + n + "?id=" + n;
       }
     }

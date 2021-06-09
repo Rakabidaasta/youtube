@@ -1,16 +1,21 @@
 .video {
   &_item {
     margin: 80px 100px;
+    width: 67%;
 
     &>iframe {
       width: 1279px;
       height: 725px;
 
     }
+
+    &>hr {
+      background-color: #3f3f3f;
+    }
   }
 
   &_header {
-    padding-top: 20px;
+    padding-top: 10px;
     font-size: 18px;
   }
 
@@ -29,16 +34,19 @@
       align-items: center;
       font-weight: 900;
       text-transform: uppercase;
+
       &>.like {
         display: flex;
         align-items: center;
         font-weight: 900;
 
-        &>.isliked>img {
-          margin: 0 10px;
-
+        &>.isliked {
           &:hover {
             cursor: pointer;
+          }
+
+          &>img {
+            margin: 0 10px;
           }
         }
 
@@ -46,9 +54,8 @@
       }
 
       &>.share {
-        &> img {
-          cursor: pointer;
-        }
+        cursor: pointer;
+
         padding: 0 10px;
         align-items: center;
       }
@@ -58,9 +65,56 @@
 
 
 .active {
-  color: yellow;
+  color: #3EA6FF;
 
   &>img {
-    fill: yellow;
+    fill: #3EA6FF;
   }
+
+  padding-bottom: 10px;
+  border-bottom: 1px solid #3EA6FF;
+}
+
+
+.channel {
+  &_header {
+    display: flex;
+
+    align-items: center;
+  }
+
+  &_img {
+    margin-right: 15px;
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.video_content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button_subscribe {
+  margin-left: 30px;
+  height: 40px;
+
+  padding: 10px 15px;
+  border-radius: 5px;
+
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+
+  background-color: #CC0000;
+}
+
+.video_desc {
+  padding-top: 10px;
+  padding-left: 60px;
 }

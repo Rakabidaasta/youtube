@@ -31,8 +31,8 @@
         </div>
       </div>
       <!-- <hr> -->
-      <div class="side_links">
-        <div class="side_link" id="first">
+      <div class="side_links" id="first_item">
+        <div class="side_link">
           <img width="19" src="../static/home.svg" alt="">
           <a class="side_link_a" href="/#">Главная</a>
         </div>
