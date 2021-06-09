@@ -5,12 +5,14 @@
         <img src="../static/burger.svg" alt="">
       </div>
       <div class="logo">
-        <img width="100" src="../static/logo.svg" alt="">
+        <a href="/">
+          <img width="100" src="../static/logo.svg" alt="">
+        </a>
       </div>
       <div class="row center w-50">
         <div class="col-12 sidebar">
           <div class="input-group">
-            <input class="form-control border-secondary py-2" type="search" value="search">
+            <input class="form-control input py-2" type="search" value="search">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="button">
                 <i class="fa fa-search"></i>

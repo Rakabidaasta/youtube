@@ -1,0 +1,43 @@
+.small_grid_videos {
+    padding-top: 70px;
+    padding-left: 30px;
+}
+
+.videos_small {
+    padding: 10px 0;
+}
+
+.video_small {
+    display: grid;
+    grid-template-columns: 180px 200px;
+}
+
+.img-overflow-small {
+    grid-column: 1/2;
+    margin-right: 15px;
+
+    object-fit: cover;
+
+    width: 170px;
+    height: 100px;
+}
+
+.video_small_info {
+    grid-column: 2/3;
+
+    text-decoration: none;
+    color: #FFFFFF;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    & > p {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.small_gray_text {
+    font-size: 12px;
+    color: #909090;
+}
