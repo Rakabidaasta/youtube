@@ -1,7 +1,7 @@
 <template style="../assets/idvideo.scss">
   <div class="bg-black text-white">
     <Navbar />
-    <div class="id_video">
+    <div class="id_video" id="change_with_size">
       <div class="video_item">
         <iframe :src=urlVideo title="YouTube video player" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -76,9 +76,37 @@
         isLike: true
       }
     },
+
+    mounted() {
+      var el = document.getElementById("change_with_size")
+      if (window.innerWidth < 900) {
+        el.className = "";
+      } else {
+        el.className = "id_video";
+      }
+
+      this.$nextTick(() => {
+        window.addEventListener('resize', this.onResize);
+      })
+    },
+
+    beforeDestroy() {
+      window.removeEventListener('resize', this.onResize);
+    },
+
     computed: {
       urlVideo: function () {
         return this.videos[this.url].url
+      }
+    },
+    methods: {
+      onResize() {
+        var el = document.getElementById("change_with_size")
+        if (window.innerWidth < 900) {
+          el.className = "";
+        } else {
+          el.className = "id_video";
+        }
       }
     }
   }

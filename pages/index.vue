@@ -1,6 +1,6 @@
 <template style="../assets/main.scss">
   <div class="bg-black text-white">
-    <MainNavbar />
+    <Navbar />
     <VideoGrid />
   </div>
 </template>

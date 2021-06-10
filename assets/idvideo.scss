@@ -123,3 +123,38 @@
 .id_video {
   display: flex;
 }
+
+
+@media (max-width: 1250px) {
+  .video {
+    &_item {
+      &>iframe {
+        width: 775px;
+        height: 557px;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 950px) {
+  .video {
+    &_item {
+      &>iframe {
+        width: 575px;
+        height: 357px;
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .video {
+    &_item {
+      &>iframe {
+        width: 375px;
+        height: 257px;
+      }
+    }
+  }
+}

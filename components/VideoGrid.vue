@@ -1,5 +1,5 @@
 <template style="../assets/videogrid.scss">
-  <div class="row row-cols-4 videos_grid">
+  <div class="row row-cols-4 videos_grid" id="change_with_size">
     <div class="videos_a" v-for="video in videos" v-bind:key="video.url">
       <div class="col video_a">
         <a v-bind:href=getstr(video.index,video.url) target="_blank" style="text-decoration: none;"
@@ -29,14 +29,6 @@
   import videos_json from '../content/videos.json'
 
   export default {
-    async asyncData({
-      $axios
-    }) {
-      const users = videos_json;
-      return {
-        users
-      };
-    },
     data() {
       return {
         props: ["url"],
@@ -44,9 +36,45 @@
         videos: videos_json
       }
     },
+
+    mounted() {
+      var el = document.getElementById("change_with_size")
+      if (window.innerWidth > 1600) {
+        el.className = "row row-cols-4 videos_grid";
+      } else if (window.innerWidth > 1300) {
+        el.className = "row row-cols-3 videos_grid";
+      } else if (window.innerWidth > 800) {
+        el.className = "row row-cols-2 videos_grid";
+      } else {
+        el.className = "row row-cols-1 videos_grid";
+      }
+
+      this.$nextTick(() => {
+        window.addEventListener('resize', this.onResize);
+      })
+    },
+
+    beforeDestroy() {
+        window.removeEventListener('resize', this.onResize);
+    },
+
     methods: {
       getstr(n, url) {
-        return "http://localhost:3000/" + n + "?id=" + n;
+        return n + "?id=" + n;
+      },
+      onResize() {
+        var el = document.getElementById("change_with_size")
+
+        if (window.innerWidth > 1600) {
+          el.className = "row row-cols-4 videos_grid";
+        } else if (window.innerWidth > 1300) {
+          el.className = "row row-cols-3 videos_grid";
+        } else if (window.innerWidth > 800) {
+          el.className = "row row-cols-2 videos_grid";
+        } else {
+          el.className = "row row-cols-1 videos_grid";
+        }
+
       }
     }
   }

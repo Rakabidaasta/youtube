@@ -27,7 +27,7 @@
     },
     methods: {
       getstr(n, url) {
-        return "http://localhost:3000/" + n + "?id=" + n;
+        return n + "?id=" + n;
       }
     }
   }

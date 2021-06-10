@@ -18,9 +18,13 @@ export default {
     ]
   },
 
+  server: {
+    host: '0.0.0.0'
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '@/assets/main.scss', 
+    '@/assets/main.scss',
     '@/assets/videogrid.scss',
     '@/assets/smallgridvideos.scss',
     '@/assets/navbar.scss',

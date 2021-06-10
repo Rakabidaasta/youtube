@@ -11,7 +11,7 @@
       </div>
       <div class="row center w-50">
         <div class="col-12 sidebar">
-          <div class="input-group">
+          <div class="input-group" id="change_with_size_search">
             <input class="form-control input py-2" type="search" value="search">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="button">
@@ -21,7 +21,7 @@
           </div>
         </div>
       </div>
-      <a href="/#" class="login" @click="checkLogin">Войти</a>
+      <a href="/#" class="login right w-10" @click="checkLogin">Войти</a>
     </nav>
     <div class="blur" v-if="isClicked || isLogin"></div>
     <transition name="sidebar">
@@ -32,7 +32,9 @@
               <img src="../static/burger.svg" alt="">
             </div>
             <div class="logo">
-              <img width="100" src="../static/logo.svg" alt="">
+              <a href="/">
+                <img width="100" src="../static/logo.svg" alt="">
+              </a>
             </div>
           </div>
           <hr>
@@ -97,22 +99,22 @@
           </div>
           <hr>
           <h3 class="aside_header">Подписки</h3>
-          <div class="subs" v-for="test in tests" v-bind:key="test">
-            <div class="playlist_item subs_item" v-if="checkIndex(test.index, 0)">
-              <img :src=test.img alt="">
-              <a href="/#">{{ test.name }}</a>
+          <div class="subs" v-for="video in videos" v-bind:key="video.url">
+            <div class="playlist_item subs_item" v-if="checkIndex(video.index, 0)">
+              <img :src=video.channel_img alt="">
+              <a href="/#">{{ video.channel }}</a>
             </div>
           </div>
           <div class="side_link" @click="checkSub" v-if="!isSub">
             <img width="20" src="../static/list.svg" alt="">
-            <a class="side_link_a" href="/#" v-bind="tests">Показать ещё 3</a>
+            <a class="side_link_a" href="/#" v-bind="tests">Показать ещё 5</a>
           </div>
 
           <div class="sub_adds" v-if="isSub">
-            <div class="subs" v-for="test in tests" v-bind:key="test">
-              <div class="playlist_item subs_item" v-if="checkIndex(test.index, 1)">
-                <img :src=test.img alt="">
-                <a href="/#">{{ test.name }}</a>
+            <div class="subs" v-for="video in videos" v-bind:key="video.url">
+              <div class="playlist_item subs_item" v-if="checkIndex(video.index, 1)">
+                <img :src=video.channel_img alt="">
+                <a href="/#">{{ video.channel }}</a>
               </div>
             </div>
           </div>
@@ -188,6 +190,7 @@
 </script>
 <script>
   import content from '../content/test.json'
+  import videos_json from '../static/videos/videos.json'
   export default {
     data() {
       return {
@@ -196,9 +199,27 @@
         isSub: false,
         tests: content,
         isLogin: false,
+        videos: videos_json,
         subAdds: Number(content.length - 5)
       }
     },
+    mounted() {
+      var el = document.getElementById("change_with_size_search")
+      if (window.innerWidth < 800) {
+        el.style.visibility = "hidden";
+      } else {
+        el.style.visibility = "visible";
+      }
+
+      this.$nextTick(() => {
+        window.addEventListener('resize', this.onResize);
+      })
+    },
+
+    beforeDestroy() {
+      window.removeEventListener('resize', this.onResize);
+    },
+
     methods: {
       checkClicked() {
         this.isClicked = !this.isClicked
@@ -231,9 +252,17 @@
         let tot = 0;
         tot = content.length - 5
         return tot
+      },
+      onResize() {
+        var el = document.getElementById("change_with_size_search")
+        if (window.innerWidth < 800) {
+          el.style.visibility = "hidden";
+        } else {
+          el.style.visibility = "visible";
+        }
+
       }
     },
   }
 
 </script>
-
