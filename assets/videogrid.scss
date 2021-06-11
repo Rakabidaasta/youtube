@@ -2,6 +2,7 @@
 
 .video {
   &s_grid {
+
     padding-top: 80px;
     display: grid;
 
@@ -78,4 +79,11 @@
 
   width: 40px;
   height: 40px;
+}
+
+
+@media (max-width: 800px) {
+  .videos_grid {
+    padding-left: 70px;
+  }
 }
