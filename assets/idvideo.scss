@@ -114,6 +114,24 @@
   text-align: center;
 
   background-color: #CC0000;
+  transition: all .5s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    background-color: white;
+    color: #CC0000;
+  }
+}
+
+.subs_true {
+  background-color: #303030;
+  color: #fff;
+
+  &:hover {
+    cursor: pointer;
+    color: #303030;
+    background-color: #fff;
+  }
 }
 
 .video_desc {

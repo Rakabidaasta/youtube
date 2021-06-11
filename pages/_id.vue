@@ -46,8 +46,8 @@
               {{ video.channel }}
             </div>
           </div>
-          <div class="button_subscribe">
-            Подписаться
+          <div class="button_subscribe" v-bind:class="{ subs_true: isSubsc}" @click="isSubsc = !isSubsc">
+            {{ isSubsc ? 'Отписаться' : 'Подписаться' }}
           </div>
         </div>
             <div class="video_desc">
@@ -74,7 +74,8 @@
         video: videos_json[this.$route.params.id],
         likes: 10,
         dislikes: 2,
-        isLike: true
+        isLike: true,
+        isSubsc: false
       }
     },
 
