@@ -23,7 +23,8 @@
       </div>
       <a class="login right w-10" @click="checkLogin">Войти</a>
     </nav>
-    <div class="blur" v-if="isClicked || isLogin"></div>
+    <div class="blur" @click="checkClicked" v-if="isClicked"></div>
+    <div class="blur" @click="checkLogin" v-if="isLogin"></div>
     <transition name="sidebar">
       <aside class="side" v-if="isClicked">
         <div class="scroll_nav">
