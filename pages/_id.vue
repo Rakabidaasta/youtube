@@ -16,11 +16,11 @@
           </div>
           <div class="likes">
             <div class="like" v-bind:class="{ active_border: isLike }">
-              <div class="isliked" v-bind:class="{ active: isLike }" @click="isLike = true; likes++; dislikes--">
+              <div class="share isliked" v-bind:class="{ active: isLike }" @click="isLike = true; likes++; dislikes--">
                 <img width="20" src="../static/liked.svg" alt="">
                 {{ likes }}
               </div>
-              <div class="isliked" v-bind:class="{ active: !isLike }" @click="isLike = false; dislikes++; likes--">
+              <div class="share isliked" v-bind:class="{ active: !isLike }" @click="isLike = false; dislikes++; likes--">
                 <img width="20" src="../static/dislike.svg" alt="">
                 {{ dislikes }}
               </div>
@@ -45,19 +45,20 @@
               <img :src=video.channel_img alt="" class="channel_img">
               {{ video.channel }}
             </div>
+          </div>
+          <div class="button_subscribe">
+            Подписаться
+          </div>
+        </div>
             <div class="video_desc">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, nemo, molestias quam quos quae
               doloremque recusandae quidem aliquid ducimus facere repellendus autem rem odio accusamus optio eius?
               Ipsum,
               velit quas!
             </div>
-          </div>
-          <div class="button_subscribe">
-            Подписаться
-          </div>
-        </div>
+      <hr>
       </div>
-      <SmallVideoGrid />
+      <SmallVideoGrid style="grid-column: 4/5;"/>
     </div>
   </div>
 </template>
@@ -77,38 +78,11 @@
       }
     },
 
-    mounted() {
-      var el = document.getElementById("change_with_size")
-      if (window.innerWidth < 900) {
-        el.className = "";
-      } else {
-        el.className = "id_video";
-      }
-
-      this.$nextTick(() => {
-        window.addEventListener('resize', this.onResize);
-      })
-    },
-
-    beforeDestroy() {
-      window.removeEventListener('resize', this.onResize);
-    },
-
     computed: {
       urlVideo: function () {
         return this.videos[this.url].url
       }
     },
-    methods: {
-      onResize() {
-        var el = document.getElementById("change_with_size")
-        if (window.innerWidth < 900) {
-          el.className = "";
-        } else {
-          el.className = "id_video";
-        }
-      }
-    }
   }
 
 </script>

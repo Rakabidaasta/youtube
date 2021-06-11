@@ -1,12 +1,13 @@
-// #change_with_size {
-//   margin-left: -100px;
-// }
+
 
 .video {
   &s_grid {
-    padding: 10px 30px;
     padding-top: 80px;
-    padding-left: 100px;
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, 470px);
+    align-items: center;
+    justify-content: center;
   }
 
   &_time {

@@ -12,7 +12,7 @@
       <div class="row center w-50">
         <div class="col-12 sidebar">
           <div class="input-group" id="change_with_size_search">
-            <input class="form-control input py-2" type="search" value="search">
+            <input class="form-control input py-2" type="search" placeholder="search">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="button">
                 <i class="fa fa-search"></i>
