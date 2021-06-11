@@ -21,7 +21,7 @@
           </div>
         </div>
       </div>
-      <a href="/#" class="login right w-10" @click="checkLogin">Войти</a>
+      <a class="login right w-10" @click="checkLogin">Войти</a>
     </nav>
     <div class="blur" v-if="isClicked || isLogin"></div>
     <transition name="sidebar">
@@ -102,7 +102,7 @@
           <div class="subs" v-for="video in videos" v-bind:key="video.url">
             <div class="playlist_item subs_item" v-if="checkIndex(video.index, 0)">
               <img :src=video.channel_img alt="">
-              <a href="/#">{{ video.channel }}</a>
+              <a href="/">{{ video.channel }}</a>
             </div>
           </div>
           <div class="side_link" @click="checkSub" v-if="!isSub">

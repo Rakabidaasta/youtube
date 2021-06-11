@@ -278,6 +278,8 @@ body {
   transition: all 0.5s ease-in-out;
 
   &:hover {
+    cursor: pointer;
+
     background-color: #FF0000;
     color: #fff;
     text-decoration: none;
