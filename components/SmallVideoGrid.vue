@@ -26,7 +26,7 @@
       }
     },
     methods: {
-      getstr(n, url) {
+      getstr(n) {
         return n + "?id=" + n;
       }
     }

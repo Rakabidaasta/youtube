@@ -1,0 +1,45 @@
+.playlist {
+    padding: 70px 50px 0;
+    display: flex;
+}
+
+.playlist_vid_grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,300px);
+
+    align-items: center;
+}
+
+.vid_item {
+    display: flex;
+    width: 100%;
+    padding: 10px 20px;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    border-radius: 10px;
+
+    transition: .5s all ease-in-out;
+
+    &:hover {
+        text-decoration: none;
+        color: white;
+        background-color: rgba(255, 255, 255, 0.25);
+    }
+}
+
+.text_gray {
+    color: #909090;
+}
+
+@media (max-width: 600px) {
+    .playlist {
+        padding: 60px 0 0 10px;
+        display: block;
+    }
+
+    .vid_item {
+        display: block;
+        
+    }
+}

@@ -28,8 +28,10 @@ export default {
     '@/assets/videogrid.scss',
     '@/assets/smallgridvideos.scss',
     '@/assets/navbar.scss',
+    '@/assets/playlist.scss',
     '@/assets/mainnavbar.scss',
-    '@/assets/idvideo.scss'
+    '@/assets/idvideo.scss',
+    '@/assets/idplaylist.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

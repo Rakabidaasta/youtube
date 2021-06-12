@@ -217,23 +217,29 @@ body {
 .playlist_item {
   & img {
     color: #909090;
+    margin-right: 20px;
   }
 
-  &>a {
-    padding-left: 20px;
-    text-decoration: none;
-    font-size: 15px;
-    color: #fff;
-  }
+  text-decoration: none;
+  font-size: 15px;
+  color: #fff;
 
-  padding: 10px 25px;
+  // padding: 10px 25px;
 
   &:hover {
     cursor: pointer;
     background-color: #383838;
+    text-decoration: none;
   }
 }
 
+.side_link_a {
+  &:hover {
+    cursor: pointer;
+    background-color: #383838;
+    text-decoration: none;
+  }
+}
 
 .subs_item {
   display: flex;

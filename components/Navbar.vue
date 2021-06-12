@@ -57,7 +57,7 @@
           <div class="side_links">
             <div class="side_link">
               <img width="20" src="../static/libs.svg" alt="">
-              <a class="side_link_a" href="/#2">Библиотека</a>
+              <a class="side_link_a" href="/playlists/">Библиотека</a>
             </div>
             <div class="side_link">
               <img width="19" src="../static/history.svg" alt="">
@@ -77,25 +77,21 @@
             </div>
             <div class="side_link" @click="checkDropdown" v-if="!isDropdown">
               <img width="20" src="../static/list.svg" alt="">
-              <a class="side_link_a" href="/#">Развернуть</a>
+              <a class="side_link_a">Развернуть</a>
             </div>
-            <div class="playlists" v-if="isDropdown">
-              <div class="playlist_item">
-                <img width="20" src="../static/playlist.svg" alt="">
-                <a class="side_link_a" href="/#">Placeholder</a>
+            <div v-if="isDropdown">
+              <div class="playlists" v-for="playlist in playlists" v-bind:key="playlist.index">
+                <a class="side_link_a" :href=getplay(playlist.index) target="_blank"> 
+                  <div class="playlist_item">
+                    <img width="20" src="../static/playlist.svg" alt="">
+                    {{ playlist.name }}
+                  </div>
+                </a>
               </div>
-              <div class="playlist_item">
-                <img width="20" src="../static/playlist.svg" alt="">
-                <a class="side_link_a" href="/#">Placeholder</a>
-              </div>
-              <div class="playlist_item">
-                <img width="20" src="../static/live_playlist.svg" alt="">
-                <a class="side_link_a" href="/#">Placeholder</a>
-              </div>
-              <div class="playlist_item">
-                <img width="20" src="../static/playlist.svg" alt="">
-                <a class="side_link_a" href="/#">Placeholder</a>
-              </div>
+            </div>
+            <div class="side_link" @click="checkDropdown" v-if="isDropdown">
+              <img width="20" src="../static/dropoff.svg" alt="">
+              <a class="side_link_a">Свернуть</a>
             </div>
           </div>
           <hr>
@@ -108,7 +104,7 @@
           </div>
           <div class="side_link" @click="checkSub" v-if="!isSub">
             <img width="20" src="../static/list.svg" alt="">
-            <a class="side_link_a" href="/#" v-bind="tests">Показать ещё 5</a>
+            <a class="side_link_a" v-bind="tests">Показать ещё 5</a>
           </div>
 
           <div class="sub_adds" v-if="isSub">
@@ -118,6 +114,10 @@
                 <a href="/#">{{ video.channel }}</a>
               </div>
             </div>
+          </div>
+          <div class="side_link" @click="checkSub" v-if="isSub">
+            <img width="20" src="../static/dropoff.svg" alt="">
+            <a class="side_link_a" v-bind="tests">Скрыть 5</a>
           </div>
           <hr>
           <h3 class="aside_header">Другие возможности</h3>
@@ -192,6 +192,8 @@
 <script>
   import content from '../content/test.json'
   import videos_json from '../static/videos/videos.json'
+  import playlists_json from '../content/playlists.json'
+
   export default {
     data() {
       return {
@@ -201,7 +203,8 @@
         tests: content,
         isLogin: false,
         videos: videos_json,
-        subAdds: Number(content.length - 5)
+        subAdds: Number(content.length - 5),
+        playlists: playlists_json
       }
     },
     mounted() {
@@ -262,6 +265,9 @@
           el.style.visibility = "visible";
         }
 
+      },
+      getplay(n) {
+        return "/playlists/" + n + "?id=" + n;
       }
     },
   }
