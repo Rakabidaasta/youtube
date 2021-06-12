@@ -5,7 +5,7 @@
         <a v-bind:href=getstr(video.index,video.url) target="_blank" style="text-decoration: none;"
           v-bind:url="video.url">
           <div class="img-overflow">
-            <img :src=video.preview alt="" style="width: 400px;overflow:hidden;">
+            <img :src=video.preview alt="">
             <p class="video_time"> {{ video.time_long }} </p>
           </div>
 

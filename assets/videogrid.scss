@@ -65,7 +65,7 @@
 
   object-fit: cover;
 
-  width: 200px;
+  width: 400px;
   height: 200px;
   padding-bottom: 10px;
   position: relative;
@@ -85,5 +85,27 @@
 @media (max-width: 800px) {
   .videos_grid {
     padding-left: 70px;
+  }
+}
+
+@media (max-width: 500px) {
+  .videos_grid {
+    padding-left: 0px;
+    grid-template-columns: repeat(auto-fill, 370px);
+  }
+
+  .img-overflow>img {
+    width: 300px;
+  }
+}
+
+@media (width: 320px) {
+  .videos_grid {
+    // padding-left: 100px;
+    grid-template-columns: repeat(auto-fill, 320px);
+  }
+
+  .img-overflow>img {
+    width: 200px;
   }
 }

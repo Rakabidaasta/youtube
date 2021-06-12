@@ -16,11 +16,11 @@
           </div>
           <div class="likes">
             <div class="like" v-bind:class="{ active_border: isLike }">
-              <div class="share isliked" v-bind:class="{ active: isLike }" @click="isLike = true; likes++; dislikes--">
+              <div class="share isliked" v-bind:class="{ active: isLike === 1 }" @click="changeLike(1)">
                 <img width="20" src="../static/liked.svg" alt="">
                 {{ likes }}
               </div>
-              <div class="share isliked" v-bind:class="{ active: !isLike }" @click="isLike = false; dislikes++; likes--">
+              <div class="share isliked" v-bind:class="{ active: isLike === 2 }" @click="changeLike(2)">
                 <img width="20" src="../static/dislike.svg" alt="">
                 {{ dislikes }}
               </div>
@@ -50,15 +50,15 @@
             {{ isSubsc ? 'Отписаться' : 'Подписаться' }}
           </div>
         </div>
-            <div class="video_desc">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, nemo, molestias quam quos quae
-              doloremque recusandae quidem aliquid ducimus facere repellendus autem rem odio accusamus optio eius?
-              Ipsum,
-              velit quas!
-            </div>
-      <hr>
+        <div class="video_desc">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, nemo, molestias quam quos quae
+          doloremque recusandae quidem aliquid ducimus facere repellendus autem rem odio accusamus optio eius?
+          Ipsum,
+          velit quas!
+        </div>
+        <hr>
       </div>
-      <SmallVideoGrid style="grid-column: 4/5;"/>
+      <SmallVideoGrid style="grid-column: 4/5;" />
     </div>
   </div>
 </template>
@@ -66,7 +66,6 @@
 <script>
   import videos_json from '../content/videos.json'
   export default {
-
     data() {
       return {
         videos: videos_json,
@@ -74,16 +73,47 @@
         video: videos_json[this.$route.params.id],
         likes: 10,
         dislikes: 2,
-        isLike: true,
-        isSubsc: false
+        isLike: 0,
+        isSubsc: false,
+        err: false
       }
     },
-
     computed: {
       urlVideo: function () {
         return this.videos[this.url].url
       }
     },
+
+    methods: {
+      changeLike(n) {
+        if (n === 1) {
+          if (this.isLike === 1) {
+            this.likes--;
+            this.isLike = 0
+          } else if (this.isLike === 2) {
+            this.dislikes--;
+            this.likes++;
+            this.isLike = 1
+          } else {
+            this.likes++;
+            this.isLike = 1
+          }
+        }
+        if (n === 2) {
+          if (this.isLike === 2) {
+            this.dislikes--;
+            this.isLike = 0
+          } else if (this.isLike === 1) {
+            this.dislikes++;
+            this.likes--;
+            this.isLike = 2
+          } else {
+            this.dislikes++;
+            this.isLike = 2
+          }
+        }
+      }
+    }
   }
 
 </script>
