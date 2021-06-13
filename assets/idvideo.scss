@@ -185,8 +185,8 @@
 
 @media (max-width: 700px) {
 
-  .share {
-    display: flex;
-    padding-right: 5px;
+  .share > span {
+    display: none;
+    // padding-right: 5px;
   }
 }

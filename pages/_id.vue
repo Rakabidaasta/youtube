@@ -27,11 +27,11 @@
             </div>
             <div class="share">
               <img width="20" src="../static/share.svg" alt="">
-              Поделиться
+              <span>Поделиться</span>
             </div>
             <div class="share">
               <img width="20" src="../static/add_to_playlist.svg" alt="">
-              Сохранить
+              <span>Сохранить</span>
             </div>
             <div class="share">
               <img width="20" src="../static/three_dots.svg" alt="">
